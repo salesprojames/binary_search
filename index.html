@@ -111,18 +111,21 @@
     "Annette",
     "Ofelia"]
 
-    document.getElementById("search").addEventListener("keyup", function(e) {
-      var searchTerm = e.target.value;
-
-      var found = false;
-      for(var i = 0; i < names.length; i++) {
-        if(names[i] === searchTerm) {
-          found = true;
+    function findItem(haystack, needle) {
+      for(var i = 0; i < haystack.length; i++) {
+        if(haystack[i] === needle) {
+          return true;
         }
       }
 
+      return false;
+    }
+
+    document.getElementById("search").addEventListener("keyup", function(e) {
+      var searchTerm = e.target.value;
+
       // if it's in the array
-      if(found) {
+      if(findItem(names, searchTerm)) {
         document.getElementById("result").innerHTML = "Found";
       } else {
         document.getElementById("result").innerHTML = "Not found";
