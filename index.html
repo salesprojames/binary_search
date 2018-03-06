@@ -111,8 +111,22 @@
     "Annette",
     "Ofelia"]
 
-    document.getElementById("search").addEventListener("click", function(e) {
-      document.getElementById("result").innerHTML = "Not found";
+    document.getElementById("search").addEventListener("keyup", function(e) {
+      var searchTerm = e.target.value;
+
+      var found = false;
+      for(var i = 0; i < names.length; i++) {
+        if(names[i] === searchTerm) {
+          found = true;
+        }
+      }
+
+      // if it's in the array
+      if(found) {
+        document.getElementById("result").innerHTML = "Found";
+      } else {
+        document.getElementById("result").innerHTML = "Not found";
+      }
     })
 
   </script>
