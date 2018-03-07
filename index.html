@@ -8,108 +8,9 @@
 
   <p id="result"></p>
 
+  <script type="text/javascript" src="array.js"></script>
+
   <script type="text/javascript">
-    var names = [
-    "Emely",
-    "Daisy",
-    "Valerie",
-    "Zackary",
-    "Violette",
-    "Ricky",
-    "Sammy",
-    "Evalyn",
-    "Lucie",
-    "Jordon",
-    "Justice",
-    "Keyshawn",
-    "Brandy",
-    "Angie",
-    "Evangeline",
-    "Cornell",
-    "Cordie",
-    "Isaac",
-    "Harold",
-    "Adrienne",
-    "Liam",
-    "Orin",
-    "Andre",
-    "Minerva",
-    "Theo",
-    "Olaf",
-    "Katheryn",
-    "Kale",
-    "Brendan",
-    "Dominique",
-    "Nathanael",
-    "Antoinette",
-    "Lavada",
-    "Francesca",
-    "Santa",
-    "Catherine",
-    "Herminio",
-    "Elinore",
-    "Rogelio",
-    "Micaela",
-    "Twila",
-    "Darryl",
-    "Garrick",
-    "Else",
-    "Aron",
-    "Phoebe",
-    "Neva",
-    "Josie",
-    "Winfield",
-    "Thurman",
-    "Dashawn",
-    "Vena",
-    "Christop",
-    "Timothy",
-    "Talia",
-    "Ocie",
-    "Sasha",
-    "Shanelle",
-    "Verda",
-    "Nellie",
-    "Moises",
-    "Karina",
-    "Ashly",
-    "Reese",
-    "Opal",
-    "Jadyn",
-    "Nicolette",
-    "Armando",
-    "Valentina",
-    "Wilber",
-    "Albina",
-    "Jettie",
-    "Dayna",
-    "Cecil",
-    "Natalia",
-    "Eric",
-    "Edythe",
-    "Ryder",
-    "Jose",
-    "Cydney",
-    "Lucinda",
-    "Reva",
-    "Mozelle",
-    "Mazie",
-    "Royal",
-    "Tressa",
-    "Garnett",
-    "Sheridan",
-    "Shanie",
-    "Jess",
-    "Destin",
-    "Devin",
-    "Felton",
-    "Kendrick",
-    "Doris",
-    "Oleta",
-    "Aryanna",
-    "Dixie",
-    "Annette",
-    "Ofelia"]
 
     function findItem(haystack, needle) {
       for(var i = 0; i < haystack.length; i++) {
@@ -123,12 +24,15 @@
 
     document.getElementById("search").addEventListener("keyup", function(e) {
       var searchTerm = e.target.value;
-
+      var startTime = new Date();
+      var found = findItem(names, searchTerm);
+      var endTime = new Date();
+      var duration = endTime - startTime;
       // if it's in the array
-      if(findItem(names, searchTerm)) {
-        document.getElementById("result").innerHTML = "Found";
+      if(found) {
+        document.getElementById("result").innerHTML = "Found in " + duration;
       } else {
-        document.getElementById("result").innerHTML = "Not found";
+        document.getElementById("result").innerHTML = "Not found " + duration;
       }
     })
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <input id="search" />
+
+  <p id="result"></p>
+
+  <script type="text/javascript" src="array.js"></script>
+
+  <script type="text/javascript">
+    // names = names.sort();
+
+    function findItem(haystack, needle) {
+      var lower = 0;
+      var upper = haystack.length;
+
+      while(lower < upper) {
+        var middleIdx = lower + parseInt(((upper - lower) / 2));
+        var middleValue = haystack[middleIdx];
+        if(middleValue === needle) {
+          return true;
+        }
+
+        if(needle < middleValue) {
+          upper = middleIdx - 1;
+        } else {
+          if(lower == middleIdx) {
+            return false;
+          }
+          lower = middleIdx;
+        }
+      }
+
+      return false;
+    }
+
+    document.getElementById("search").addEventListener("keyup", function(e) {
+      var searchTerm = e.target.value;
+      var startTime = new Date();
+      var found = findItem(names, searchTerm);
+      var endTime = new Date();
+      var duration = endTime - startTime;
+      // if it's in the array
+      if(found) {
+        document.getElementById("result").innerHTML = "Found in " + duration;
+      } else {
+        document.getElementById("result").innerHTML = "Not found " + duration;
+      }
+    })
+
+  </script>
+</body>
+</html>
+
